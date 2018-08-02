@@ -1,0 +1,331 @@
+@import './inc/_mixin.scss';
+@import './inc/_var.scss';
+@import './inc/_global.scss';
+:root {
+    .jscanvas,
+    canvas {
+        max-width: 100%;
+    }
+    /* Fonts */
+    --lemonada: 'Lemonada',
+    cursive;
+    --montserrat: 'Montserrat',
+    sans-serif;
+    --chela-one: 'Chela One',
+    cursive;
+    --anton: 'Anton',
+    sans-serif;
+    --lobster: 'Lobster',
+    cursive;
+    --roboto: 'Roboto',
+    sans-serif;
+    --markazi: 'Markazi Text',
+    serif;
+    --hyeon: 'Do Hyeon',
+    sans-serif;
+    /* Color */
+    --danger-color: #e74c3c;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --info-color: #3498db;
+    --primary-color: #2980b9;
+    --tim-color: #292fa3;
+    --tim-light-color: #2931c9;
+    --tim-dark-color: #1f247d;
+    /* header */
+    --header-bg: #000;
+}
+
+.lemonada {
+    font-family: var(--lemonada);
+}
+
+.montserrat {
+    font-family: var(--montserrat);
+}
+
+.roboto {
+    font-family: var(--roboto);
+}
+
+.hyeon {
+    font-family: var(--hyeon);
+}
+
+.anton {
+    font-family: var(--anton);
+}
+
+.lobster {
+    font-family: var(--lobster);
+}
+
+.bg-tim {
+    background-color: var(--tim-color);
+}
+
+.bg-light-tim {
+    background-color: var(--tim-light-color)
+}
+
+.bg-dark-tim {
+    background-color: var(--tim-dark-color)
+}
+
+#--js-loading {
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    canvas {
+        z-index: 1000;
+    }
+}
+
+.text-loading {
+    z-index: 1001;
+    position: relative;
+    >* {
+        position: relative;
+        color: rgba($color: #fff, $alpha: 0.3);
+        &::before {
+            content: attr(data-text);
+            position: absolute;
+            overflow: hidden;
+            max-width: 7em;
+            white-space: nowrap;
+            color: #fff;
+            animation: loading 2.5s ease-in;
+        }
+    }
+}
+
+#loading-top,
+#loading-bottom {
+    left: 0;
+    height: 50vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 1000;
+    @include effect;
+}
+
+#loading-top {
+    top: 0;
+    background-image: linear-gradient(to bottom, #0033dd 10%, #0d42b2);
+}
+
+#loading-bottom {
+    bottom: 0;
+    background-image: linear-gradient(to bottom, #0d42b2 10%, #0044ff);
+}
+
+.gh-gradien- {
+    &white-blue {
+        background-image: linear-gradient(to bottom, #fff, var(--light), rgba(0, 136, 255, 0.4));
+    }
+    &light-blue {
+        background-image: linear-gradient(to bottom, rgba(0, 136, 255, 0.4), var(--primary));
+    }
+}
+
+canvas[data-canvas],
+.jscanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+}
+
+@keyframes loading {
+    0% {
+        max-width: 0;
+    }
+}
+
+// header {
+//     background-color: $nocolor;
+//     position: relative;
+//     z-index: 1;
+// }
+.gh-logo {
+    z-index: 2;
+    position: relative;
+    img {
+        max-width: 180px;
+        @include effect;
+    }
+}
+
+.gh-header-top {
+    display: block;
+    @include md {
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 5;
+        background-color: transparent;
+    }
+    @include sm{
+        background-color: var(--tim-dark-color);
+        padding: 8px 0;
+    }
+    @include effect;
+    &.gh-menu-affix {
+        background-color: rgba(21, 48, 171, 0.9);
+    }
+}
+
+aside {
+    position: relative;
+    z-index: 5;
+}
+
+.gh-btn- {
+    &custom-tab {
+        a {
+            border-color: #2980b9;
+            border-style: solid;
+            display: block;
+            padding: 10px 20px;
+            @include txt-color(#2980b9, #fff);
+            @include bg-color($nocolor, #2980b9);
+            &:first-child {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                border-width: 1px 0 1px 1px;
+            }
+            &:last-child {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-width: 1px;
+            }
+        }
+    }
+}
+
+.gh-number-cicler {
+    font-size: 25pt;
+    font-family: var(--hyeon);
+    font-weight: bold;
+}
+
+.gh-menu {
+    li {
+        >a {
+            font-size: 11pt;
+            font-family: var(--roboto);
+            display: block;
+            position: relative;
+            color: #fff;
+            &::before {
+                content: attr(data-text);
+                position: absolute;
+                overflow: hidden;
+                width: 0;
+                white-space: nowrap;
+                color: var(--success-color);
+                @include effect;
+            }
+            &:hover::before {
+                width: 100%;
+            }
+        }
+        @include md {
+            &:not(:last-child)>a {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+.gh-user-btn {
+    a {
+        color: #fff;
+        padding: 8px 23px;
+        position: relative;
+        text-transform: uppercase;
+        font-family: var(--roboto);
+        font-size: 10pt;
+        &::before,
+        &::after {
+            top: 0;
+            left: 0;
+            content: '';
+            position: absolute;
+            border-radius: 4px;
+        }
+        &::before {
+            background-image: linear-gradient(to right, #41faa4 0%, #16a3fe 100%);
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        &::after {
+            left: 2px;
+            top: 2px;
+            opacity: 1;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            background-color: #0b3691;
+            z-index: -1;
+            @include effect;
+        }
+        &:hover::after {
+            opacity: 0;
+        }
+        @include sm {
+            display: block;
+            padding: 10px;
+            flex: 1;
+            text-align: center;
+            &::after {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+            }
+            &::before {
+                content: unset;
+            }
+            &:hover {
+                &::after {
+                    content: unset;
+                }
+                &::before {
+                    content: '';
+                }
+            }
+        }
+    }
+}
+
+.gh-slider {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    background: url(../images/header-overlay.png) 0 0 no-repeat, url(../images/header-bg-azure.png) 50% 100% no-repeat; // background-size: auto auto, auto auto;
+    // background-size: contain, cover;
+    background-color: #292fa3;
+    @include sm {
+        min-height: unset;
+        padding: 20px 0;
+        img{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+    }
+}
+
+.gh-box {
+    .gh-target-icon {
+        max-width: 130px;
+    }
+}

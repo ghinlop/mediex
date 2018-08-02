@@ -1,0 +1,9 @@
+{
+    "engine": "ejs",
+    "domain": "mediex.gh",
+    "path_static": "static",
+    "dev_path": "dev",
+    "css_path": "css",
+    "minify": false,
+    "ext": "ejs"
+}

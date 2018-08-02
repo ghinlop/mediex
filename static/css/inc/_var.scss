@@ -1,0 +1,96 @@
+$fa: 'fontawesome';
+$fontdefault: 'Cabin', 'Tahoma', Arial, "Lucida Grande", sans-serif;
+$nocolor: transparent;
+$green: #46ae39;
+$light-green: #2ecc71;
+$blue: #2b5b9e;
+$light-blue: #17a9e1;
+$red: #c0392b;
+$light-red: #e74c3c;
+$black: #222;
+$color-1: #0fb7f9;
+$color-2: #237baa;
+$color-3: #f96502;
+$color-4: #e05c04;
+$color-5: #f4a137;
+$color-6: #ecf6f9;
+
+.color-1{
+    color: $color_1!important;
+}
+.color-2{
+    color: $color-2!important;
+}
+.color-3{
+    color: $color-3!important;
+}
+.color-4{
+    color: $color-4!important;
+}
+.color-5{
+    color: $color-5!important;
+}
+.color-6{
+    color: $color-6!important;
+}
+.green{
+    color: $green;
+}
+.light-green{
+    color: $light-green;
+}
+.red{
+    color: $red;
+}
+.light-red{
+    color: $light-red;
+}
+.blue{
+    color: $blue;
+}
+.light-blue{
+    color: $light-blue;
+}
+.text-black{
+    color: $black;
+}
+
+.bg-1{
+    background-color: $color-1!important;
+}
+.bg-2{
+    background-color: $color-2!important;
+}
+.bg-3{
+    background-color: $color-3!important;
+}
+.bg-4{
+    background-color: $color-4!important;
+}
+.bg-5{
+    background-color: $color-5!important;
+}
+.bg-6{
+    background-color: $color-6!important;
+}
+.bg-green{
+    background-color: $green;
+}
+.bg-light-green{
+    background-color: $light-green;
+}
+.bg-blue{
+    background-color: $blue;
+}
+.bg-light-blue{
+    background-color: $light-blue;
+}
+.bg-red{
+    background-color: $red;
+}
+.bg-light-red{
+    background-color: $light-red;
+}
+.bg-black{
+    background-color: $black;
+}
