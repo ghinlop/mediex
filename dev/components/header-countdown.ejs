@@ -1,0 +1,24 @@
+<header id="header" class="nodesk">
+    <div class="gh-header-top" uk-sticky="animation: uk-animation-slide-top-medium; show-on-up: true; cls-active: gh-menu-affix; bottom: #footer">
+        <div class="uk-container">
+            <div class="position-relative">
+                <div class="align-items-center" uk-grid>
+                    <div class="uk-width-auto">
+                        <a href="/" class="d-block gh-logo">
+                            <img src="./static/images/logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="uk-width-expand d-md-none text-right">
+                        <a class="text-white" href="#" uk-toggle="target: #asider-menu">
+                            <i id="asider-menu" uk-icon="icon: menu; raito: 1.2"></i>
+                            <i id="asider-menu" class="bg-dark" uk-icon="icon: close; raito: 1.2" hidden></i>
+                        </a>
+                    </div>
+                    <%- include('./navbar') -%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./countdown') -%>
+
+</header>

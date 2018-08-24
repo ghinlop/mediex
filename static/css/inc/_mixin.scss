@@ -141,13 +141,12 @@ $nocolor: transparent;
     }
 }
 
-@mixin fonts($name: null, $src: null, $style: normal, $weight: normal) {
-    @if $name and $src {
+@mixin fonts($name: null, $weight: normal, $style: normal, $format : truetype) {
+    @if $name {
         @font-face {
-            font-family: $name;
-            src: url($src);
-            font-weight: $style;
-            font-style: $weight;
+            font-family: '#{$name}';
+            font-weight: $weight;
+            font-style: '#{$style}';
             @content;
         }
     }
@@ -173,77 +172,79 @@ $nocolor: transparent;
     @content;
 }
 
-@mixin border($c: #000, $n: null){
-    @if $c{
-        @if $n{
-            .border-#{$n}{
-                border-color: $c!important;
+@mixin border($c: #000, $n: null) {
+    @if $c {
+        @if $n {
+            .border-#{$n} {
+                border-color: $c !important;
             }
         }
-        @else{
-            border-color: $c!important;
+        @else {
+            border-color: $c !important;
         }
     }
     @content;
 }
 
-@mixin border-hf($hover: null, $focus: null){
-    @if $hover{
-        &:hover{
-            border-color: $hover!important;
+@mixin border-hf($hover: null, $focus: null) {
+    @if $hover {
+        &:hover {
+            border-color: $hover !important;
             @content;
         }
     }
-    @if $focus{
-        &:focus{
-            border-color: $focus!important;
+    @if $focus {
+        &:focus {
+            border-color: $focus !important;
             @content;
         }
     }
 }
 
-@mixin priceBox($n: null, $c: null, $h: null, $t: #fff){
+@mixin priceBox($n: null, $c: null, $h: null, $t: #fff) {
     @if $n and $c and $h {
-        &.#{$n}{
-            .header{
+        &.#{$n} {
+            .header {
                 background-color: $c;
-                .price, .price-top{
+                .price,
+                .price-top {
                     color: $c;
                     border-color: $c;
                 }
             }
-            .header-sub{
+            .header-sub {
                 background-color: $h;
                 color: $t;
             }
-            .footer{
+            .footer {
                 @include bg-color($c, $h);
             }
         }
     }
 }
-@mixin arrow($pos: null, $width: null, $color: null){
-    @if $pos and $width and $color{
+
+@mixin arrow($pos: null, $width: null, $color: null) {
+    @if $pos and $width and $color {
         position: absolute;
-        @if $pos == 'top' {
+        @if $pos=='top' {
             border-top: 0 solid $nocolor;
             border-bottom: $width solid $color;
             border-left: $width solid $nocolor;
             border-right: $width solid $nocolor;
         }
-        @if $pos == 'bottom' {
+        @if $pos=='bottom' {
             border-bottom: 0 solid $nocolor;
             border-top: $width solid $color;
             border-left: $width solid $nocolor;
             border-right: $width solid $nocolor;
         }
-        @if $pos == 'left' {
+        @if $pos=='left' {
             border-top: $width solid $nocolor;
             border-bottom: $width solid $nocolor;
             border-left: 0 solid $nocolor;
             border-right: $width solid $color;
         }
-        @if $pos == 'right' {
+        @if $pos=='right' {
             border-top: $width solid $nocolor;
             border-bottom: $width solid $nocolor;
             border-left: $width solid $color;
@@ -252,15 +253,47 @@ $nocolor: transparent;
         @content;
     }
 }
-@mixin uikit-alert-bg($name: null, $bg: null, $color: #fff){
-    @if $name and $bg{
-        .uk-notification-message-bg-#{$name}{
-            background-color: $bg!important;
-            color: $color!important;
+
+@mixin uikit-alert-bg($name: null, $bg: null, $color: #fff) {
+    @if $name and $bg {
+        .uk-notification-message-bg-#{$name} {
+            background-color: $bg !important;
+            color: $color !important;
             @content;
         }
     }
 }
+
+@mixin color-render($name: null, $color: null, $border: null) {
+    @if $name and $color {
+        .bg-#{$name} {
+            background-color: $color !important;
+        }
+        .text-#{$name} {
+            color: $color !important;
+        }
+    }
+    @if $border {
+        .border- {
+            &#{$name} {
+                border: 1px solid $color !important;
+                &-left {
+                    border-left: 1px solid $color !important;
+                }
+                &-right {
+                    border-right: 1px solid $color !important;
+                }
+                &-bottom {
+                    border-bottom: 1px solid $color !important;
+                }
+                &-top {
+                    border-top: 1px solid $color !important;
+                }
+            }
+        }
+    }
+}
+
 @mixin sm($w: 768px) {
     @media screen and (max-width: $w) {
         @content;
@@ -272,6 +305,7 @@ $nocolor: transparent;
         @content;
     }
 }
+
 @mixin table($min-w: 851px, $max-w: 960px) {
     @media screen and (min-width: $min-w) and (max-width: $max-w) {
         @content;

@@ -1,4 +1,5 @@
 @import './inc/_mixin.scss';
+@import './inc/_color';
 @import './inc/_var.scss';
 @import './inc/_global.scss';
 :root {
@@ -36,6 +37,8 @@
     --header-bg: #000;
 }
 
+@include color-list( $grey: false, $red: false, $orange: false, $yellow: false, $green: true, $teal: false, $blue: false, $indigo: false, $purple: false, $pink: false);
+@include color-render(success, var(--success-color));
 .lemonada {
     font-family: var(--lemonada);
 }
@@ -170,7 +173,7 @@ canvas[data-canvas],
         z-index: 5;
         background-color: transparent;
     }
-    @include sm{
+    @include sm {
         background-color: var(--tim-dark-color);
         padding: 8px 0;
     }
@@ -315,7 +318,7 @@ aside {
     @include sm {
         min-height: unset;
         padding: 20px 0;
-        img{
+        img {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -323,7 +326,69 @@ aside {
         }
     }
 }
-
+.gh-countdown{
+    position: relative;
+    z-index: 10;
+    li{
+        display: block;
+        padding: 10px;
+        background-color: rgba($color: #fff, $alpha: 0.3);
+        box-shadow: 0 0 1px 1px rgba($color: #fff,  $alpha: 0.3);
+        border-radius: 5px; 
+        position: relative;
+        overflow: hidden;
+        z-index: 0;
+        >span{
+            display: block;
+            line-height: 1;
+            font-family: var(--anton);
+            color: #fff;
+            &:first-child{
+                display: block;
+                border-bottom: 1px solid rgba($color: #fff,  $alpha: 0.3);
+            }
+            &:last-child{
+                text-transform: uppercase;
+                font-family: var(--anton);
+                color: #fff;
+                padding: 5px 0;
+                display: block;
+                text-align: center;
+            }
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 10%;
+            transform: skewX(10deg);
+            background-color: rgba($color: #fff,  $alpha: 0.1);
+            top: 0;
+            left: -100%;
+            z-index: 1;
+            animation: count-screen 5s ease-in-out infinite;
+        }
+        &:not(:last-child){
+            margin-right: 10px;
+        }
+    }
+}
+@keyframes count-screen{
+    0%{
+        width: 100%;
+        left: -110%;
+    }
+    70% {
+        width: 100%;
+        left: -110%;
+        opacity: .5;
+    }
+    100%{
+        width: 10%;
+        left: 150%;
+        opacity: 1;
+    }
+}
 .gh-box {
     .gh-target-icon {
         max-width: 130px;
